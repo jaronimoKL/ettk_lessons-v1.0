@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block title %} Расписание {% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col text-center">
+            <form class="form-row" action="{% url 'lesson_filter' %}" method="get">
+
+                {#                <div class="wrap">#}
+                {#                    <input type="text" id="input" class="input">#}
+                {#                    <div class="div__list">#}
+                {#                        <ol class="ul">#}
+                {#                            {% for teach in teacher_list %}#}
+                {#                                <li>{{ teach.last_name }}</li>#}
+                {#                            {% endfor %}#}
+                {#                        </ol>#}
+                {#                    </div>#}
+                {#                </div>#}
+                <select class="js-selectize" name="search" placeholder="Выберите город">
+                    {% for teach in teacher_list %}
+                        <option value="{{ teach.id }}">{{ teach.last_name }}</option>
+                    {% endfor %}
+                    <option value="1">Абакан</option>
+                    <option value="2">Абдулино</option>
+                    <option value="3">Абинск</option>
+                    <option value="4">Агидель</option>
+                </select>
+                <button type="submit">Поисk</button>
+                <div class="input-group">
+                    <div id="search-autocomplete" class="form-outline">
+                        <input name="search" type="text" id="form1" class="form-control"/>
+                        <label class="form-label" for="form1">Поиск</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <button type="button" class="themetoggle btn btn-them btn-floating">
+                    <span class="material-icons">light_mode</span>
+                </button>
+                {% if request.user.is_superuser %}
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input type="search" class="form-control" name="date_start" placeholder="Дата начала">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input type="date" class="form-control" name="date_end" placeholder="Дата конца">
+                    </div>
+                {% endif %}
+            </form>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Номер пары</th>
+                    <th scope="col">Дата пары</th>
+                    <th scope="col">Группа</th>
+                    <th scope="col">Преподаватель</th>
+                    <th scope="col">Кабинет</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for table in timetable_list %}
+                    <tr>
+                        <td>{{ table.number }}</td>
+                        <td>{{ table.date }}</td>
+                        <td>{{ table.group.group_name }}</td>
+                        <td>{{ table.teacher.last_name }}</td>
+                        <td>{{ table.cabinet.cabinet_name }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}
