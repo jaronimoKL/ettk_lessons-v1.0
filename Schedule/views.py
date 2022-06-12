@@ -6,24 +6,31 @@ from django.shortcuts import render
 from config.settings import USER_RANGE_START, USER_RANGE_END
 from django import views
 
-from .models import TimeTable, Teacher, Group
+from .models import TimeTable, Teacher, Group, Cabinet
 
 
-class TeacherNameView(views.generic.ListView):
-    model = Teacher
-    template_name = 'lessons_list.html'
+def main_page(request):
+    teach = Teacher.objects.all().order_by('last_name')
+    group = Group.objects.all().order_by('group_name')
+    cabinet = Cabinet.objects.all().order_by('cabinet_name')
+    response_data = {
+        'teacher_name': teach,
+        'group_name': group,
+        'cabinet_name': cabinet,
+    }
+    return render(request, 'lessons_list.html', response_data)
 
 
-class LessonsDetail(views.generic.ListView):
-    model = TimeTable
-    template_name = 'lessons_list.html'
-
-    def get_queryset(self):
-        if self.request.user.is_superuser:
-            return TimeTable.objects.all().order_by('-date')
-        else:
-            return TimeTable.objects.filter(date__range=[datetime.now() - timedelta(days=USER_RANGE_START),
-                                                         datetime.now() + timedelta(days=USER_RANGE_END)]).order_by('-date')
+# class LessonsDetail(views.generic.ListView):
+#     model = TimeTable
+#     template_name = 'lessons_list.html'
+#
+#     def get_queryset(self):
+#         if self.request.user.is_superuser:
+#             return TimeTable.objects.all().order_by('-date')
+#         else:
+#             return TimeTable.objects.filter(date__range=[datetime.now() - timedelta(days=USER_RANGE_START),
+#                                                          datetime.now() + timedelta(days=USER_RANGE_END)]).order_by('-date')
 
 
 class LessonFilterView(views.generic.ListView):

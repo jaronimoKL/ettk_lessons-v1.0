@@ -3,7 +3,6 @@ from . import views
 from django.views.decorators.cache import cache_page
 
 urlpatterns = [
-    re_path(r'^$', views.TeacherNameView.as_view(), name='teacher_name'),
-    # path('', views.GroupNameView.as_view(), name='group_name'),
-    path(r'filter/', views.LessonFilterView.as_view(), name='lesson_filter')
+    path('', views.main_page, name='main_page'),
+    path('filter/', views.LessonFilterView.as_view(), name='lesson_filter')
 ]
