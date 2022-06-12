@@ -2,9 +2,11 @@ from datetime import datetime, timedelta
 
 from django.db.models import Q
 from django.shortcuts import render
+
 from config.settings import USER_RANGE_START, USER_RANGE_END
 from django import views
-from .models import TimeTable, Teacher
+
+from .models import TimeTable, Teacher, Group
 
 
 class TeacherNameView(views.generic.ListView):

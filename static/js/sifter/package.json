@@ -14,7 +14,7 @@
   "version": "0.6.0",
   "license": "Apache-2.0",
   "author": "Brian Reavis <brian@thirdroute.com>",
-  "main": "sifter.js",
+  "main": "./sifter.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/brianreavis/sifter.js.git"
@@ -23,7 +23,7 @@
     "test": "mocha -R list"
   },
   "bin": {
-    "sifter": "bin/sifter.js"
+    "sifter": "./bin/sifter.js"
   },
   "dependencies": {
     "optimist": "^0.6.1",

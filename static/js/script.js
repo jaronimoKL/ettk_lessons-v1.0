@@ -1,22 +1,5 @@
-window.onload = () => {
-  let input = document.querySelector('#input');
-  input.oninput = function () {
-    let  value = this.value.trim();
-    let list = document.querySelectorAll('.ul li');
 
-    if(value) {
-      list.forEach(elem => {
-        if(elem.innerText.search(value) == -1) {
-          elem.classList.add('hide');
-        }
-      });
-    }else {
-      list.forEach(elem => {
-        elem.classList.remove('hide');
-      });
-    }
-  };
-};
+// Тема
 
 document.querySelector('.themetoggle').addEventListener('click', (event) => {
   event.preventDefault();
@@ -42,9 +25,14 @@ function addDarkClassToHTML() {
 }
 addDarkClassToHTML();
 
+// Поле поиска
+
 $(document).ready(function(){
 	$('.js-selectize').selectize();
 });
+
+// Не знаю что это
+
  $('#link').on('submit', function (e) {
         e.preventDefault();
         var $form = $(this),
@@ -57,3 +45,9 @@ $(document).ready(function(){
             }
         }
     });
+
+ // Дальше
+
+
+
+
