@@ -62,15 +62,18 @@ body {
     display: none;
 }
 
-.ul li{
-    list-style: none;
-}
 .div__list {
     display: none;
 }
 .input:focus ~ .div__list {
     display: block !important;
 }
-.row .col .nahuy {
-    background-color: #ff9c46 !important;
+
+ul li{
+    list-style: none;
+}
+
+.div {
+    display: grid;
+    background-color: #2F3136;
 }

@@ -4,9 +4,16 @@
 {% block content %}
     <div class="row">
         <div class="col text-center">
+            {#            Форм поиска#}
             <form class="form-row" action="{% url 'main_page' %}" method="get">
                 {#                Поле выбора Препода или группы#}
-            {{ MondayN }}
+                {{ previous }}<br>
+                {{ current }}<br>
+                {{ next }}<br>
+                {{ MondayP }}<br>
+                {{ MondayC }}<br>
+                {{ MondayN }}<br>
+                {#            Поле поиска#}
                 <select class="js-selectize" name="search" placeholder="Выберите город" onchange="this.form.submit()">
                     <option value=""></option>
                     <optgroup label="Преподаватели">
@@ -25,80 +32,159 @@
                         {% endfor %}
                     </optgroup>
                 </select>
-
             </form>
-            <div class="nahuy">
-                <p>Ахуеннейший текстуля</p>
-            </div>
+            {#        Кнопка смены темы#}
             <button type="button" class="themetoggle btn btn-them btn-floating">
                 <span class="material-icons">light_mode</span>
             </button>
-            {# Переключатели #}
+            {# Переключатели недели #}
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                            type="button" role="tab" aria-controls="home" aria-selected="true">Home
+                    <button class="nav-link active" id="previous-tab" data-bs-toggle="tab" data-bs-target="#previous"
+                            type="button" role="tab" aria-controls="previous" aria-selected="true">Previous
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
-                            type="button" role="tab" aria-controls="profile" aria-selected="false">Profile
+                    <button class="nav-link" id="current-tab" data-bs-toggle="tab" data-bs-target="#current"
+                            type="button" role="tab" aria-controls="current" aria-selected="false">Current
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
-                            type="button" role="tab" aria-controls="contact" aria-selected="false">Contact
+                    <button class="nav-link" id="next-tab" data-bs-toggle="tab" data-bs-target="#next" type="button"
+                            role="tab" aria-controls="next" aria-selected="false">Next
                     </button>
                 </li>
             </ul>
+            {#        Контент переключателей недели#}
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <p>{{ previous }}</p>
-                    {% for table in timetable %}
-                        {% if table.date == previous %}
-                            <ul>
-                                <li>{{ table.number }}</li>
-                                <li>{{ table.date }}</li>
-                                <li>{{ table.group.group_name }}</li>
-                                <li>{{ table.teacher.last_name }}</li>
-                                <li>{{ table.cabinet.cabinet_name }}</li>
-                                <li>{{ table.lesson.lesson_name }}</li>
-                                <li>{{ table.lesson.subgroups }}</li>
-                            </ul>
-                        {% endif %}
-                    {% endfor %}
+                <div class="tab-pane fade show active" id="previous" role="tabpanel" aria-labelledby="previous-tab">
+                    {#                    Переключатели дней прошлой недели#}
+                    <ul class="nav nav-tabs" id="myTabP" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="mondayp-tab" data-bs-toggle="tab"
+                                    data-bs-target="#mondayp" type="button" role="tab" aria-controls="monday"
+                                    aria-selected="true">Monday
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tuesdayp-tab" data-bs-toggle="tab" data-bs-target="#tuesdayp"
+                                    type="button" role="tab" aria-controls="tuesday" aria-selected="false">Tuesday
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="wednesdayp-tab" data-bs-toggle="tab"
+                                    data-bs-target="#wednesdayp" type="button" role="tab" aria-controls="wednesday"
+                                    aria-selected="false">Wednesday
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="thursdayp-tab" data-bs-toggle="tab" data-bs-target="#thursdayp"
+                                    type="button" role="tab" aria-controls="thursday" aria-selected="false">Thursday
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="fridayp-tab" data-bs-toggle="tab" data-bs-target="#fridayp"
+                                    type="button" role="tab" aria-controls="friday" aria-selected="false">Friday
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="saturdayp-tab" data-bs-toggle="tab" data-bs-target="#saturdayp"
+                                    type="button" role="tab" aria-controls="saturday" aria-selected="false">Saturday
+                            </button>
+                        </li>
+                    </ul>
+                    {#                    Контент переключателей дней прошлой недели#}
+                    <div class="tab-content" id="myTabContentP">
+                        <div class="tab-pane fade show active" id="mondayp" role="tabpanel"
+                             aria-labelledby="mondayp-tab">
+                            {% for table in timetable %}
+                                {% if table.date == MondayP %}
+                                            <div class="div">{{ table.number }}{{ table.date }}{{ table.group.group_name }}{{ table.teacher.last_name }}{{ table.cabinet.cabinet_name }}{{ table.lesson.lesson_name }}{{ table.lesson.subgroups }}</div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="tab-pane fade" id="tuesdayp" role="tabpanel" aria-labelledby="tuesdayp-tab">
+                            {% for table in timetable %}
+                                {% if table.date == TuesdayP %}
+                                    <ul>
+                                        <li>{{ table.number }}</li>
+                                        <li>{{ table.date }}</li>
+                                        <li>{{ table.group.group_name }}</li>
+                                        <li>{{ table.teacher.last_name }}</li>
+                                        <li>{{ table.cabinet.cabinet_name }}</li>
+                                        <li>{{ table.lesson.lesson_name }}</li>
+                                        <li>{{ table.lesson.subgroups }}</li>
+                                    </ul>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="tab-pane fade" id="wednesdayp" role="tabpanel" aria-labelledby="wednesdayp-tab">
+                            {% for table in timetable %}
+                                {% if table.date == WednesdayP %}
+                                    <ul>
+                                        <li>{{ table.number }}</li>
+                                        <li>{{ table.date }}</li>
+                                        <li>{{ table.group.group_name }}</li>
+                                        <li>{{ table.teacher.last_name }}</li>
+                                        <li>{{ table.cabinet.cabinet_name }}</li>
+                                        <li>{{ table.lesson.lesson_name }}</li>
+                                        <li>{{ table.lesson.subgroups }}</li>
+                                    </ul>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="tab-pane fade" id="thursdayp" role="tabpanel" aria-labelledby="thursdayp-tab">
+                            {% for table in timetable %}
+                                {% if table.date == ThursdayP %}
+                                    <ul>
+                                        <li>{{ table.number }}</li>
+                                        <li>{{ table.date }}</li>
+                                        <li>{{ table.group.group_name }}</li>
+                                        <li>{{ table.teacher.last_name }}</li>
+                                        <li>{{ table.cabinet.cabinet_name }}</li>
+                                        <li>{{ table.lesson.lesson_name }}</li>
+                                        <li>{{ table.lesson.subgroups }}</li>
+                                    </ul>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="tab-pane fade" id="fridayp" role="tabpanel" aria-labelledby="fridayp-tab">
+                            {% for table in timetable %}
+                                {% if table.date == FridayP %}
+                                    <ul>
+                                        <li>{{ table.number }}</li>
+                                        <li>{{ table.date }}</li>
+                                        <li>{{ table.group.group_name }}</li>
+                                        <li>{{ table.teacher.last_name }}</li>
+                                        <li>{{ table.cabinet.cabinet_name }}</li>
+                                        <li>{{ table.lesson.lesson_name }}</li>
+                                        <li>{{ table.lesson.subgroups }}</li>
+                                    </ul>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="tab-pane fade" id="saturdayp" role="tabpanel" aria-labelledby="saturdayp-tab">
+                            {% for table in timetable %}
+                                {% if table.date == SaturdayP %}
+                                    <ul>
+                                        <li>{{ table.number }}</li>
+                                        <li>{{ table.date }}</li>
+                                        <li>{{ table.group.group_name }}</li>
+                                        <li>{{ table.teacher.last_name }}</li>
+                                        <li>{{ table.cabinet.cabinet_name }}</li>
+                                        <li>{{ table.lesson.lesson_name }}</li>
+                                        <li>{{ table.lesson.subgroups }}</li>
+                                    </ul>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                    <p>{{ current }}</p>
-                    {% for table in timetable %}
-                        {% if table.date == current %}
-                            <ul>
-                                <li>{{ table.number }}</li>
-                                <li>{{ table.date }}</li>
-                                <li>{{ table.group.group_name }}</li>
-                                <li>{{ table.teacher.last_name }}</li>
-                                <li>{{ table.cabinet.cabinet_name }}</li>
-                                <li>{{ table.lesson.lesson_name }}</li>
-                                <li>{{ table.lesson.subgroups }}</li>
-                            </ul>
-                        {% endif %}
-                    {% endfor %}
+                <div class="tab-pane fade" id="current" role="tabpanel" aria-labelledby="current-tab">
+
                 </div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                    <p>{{ next }}</p>
-                    {% for table in timetable %}
-                        {% if table.date == next %}
-                            <ul>
-                                <li>{{ table.number }}</li>
-                                <li>{{ table.date }}</li>
-                                <li>{{ table.group.group_name }}</li>
-                                <li>{{ table.teacher.last_name }}</li>
-                                <li>{{ table.cabinet.cabinet_name }}</li>
-                                <li>{{ table.lesson.lesson_name }}</li>
-                                <li>{{ table.lesson.subgroups }}</li>
-                            </ul>
-                        {% endif %}
-                    {% endfor %}
+                <div class="tab-pane fade" id="next" role="tabpanel" aria-labelledby="next-tab">
+
                 </div>
             </div>
         </div>
