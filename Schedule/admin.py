@@ -5,8 +5,8 @@ from .models import Teacher, Group, Cabinet, TimeTable, Lesson, Subgroups
 
 @admin.register(TimeTable)
 class TimeTableAdmin(admin.ModelAdmin):
-    list_display = ['id', 'number', 'teacher', 'date', 'group', 'cabinet', 'lesson', 'reduction']
-    list_editable = ['number', 'teacher', 'date', 'group', 'cabinet', 'lesson', 'reduction']
+    list_display = ['id', 'number', 'teacher', 'date', 'group', 'cabinet', 'lesson', 'remote', 'reduction']
+    list_editable = ['number', 'teacher', 'date', 'group', 'cabinet', 'lesson', 'remote', 'reduction']
     ordering = ['date', 'teacher', 'number']
     search_fields = ['teacher__last_name', 'date', 'group', 'lesson']
     list_filter = (('date', DateRangeFilter),)

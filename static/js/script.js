@@ -33,21 +33,20 @@ $(document).ready(function(){
 
 // Не знаю что это
 
- $('#link').on('submit', function (e) {
-        e.preventDefault();
-        var $form = $(this),
-                $select = $form.find('select'),
-                links = $select.val();
-        if (links.length > 0) {
-            for (i in links) {
-                link = links[i];
-                window.open(link);
-            }
-        }
-    });
+ // $('#link').on('submit', function (e) {
+ //        e.preventDefault();
+ //        var $form = $(this),
+ //                $select = $form.find('select'),
+ //                links = $select.val();
+ //        if (links.length > 0) {
+ //            for (i in links) {
+ //                link = links[i];
+ //                window.open(link);
+ //            }
+ //        }
+ //    });
 
- // Дальше
-
+ // Дальше ajax
 
 
 

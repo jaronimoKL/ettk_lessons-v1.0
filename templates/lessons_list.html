@@ -6,7 +6,8 @@
         <div class="col text-center">
             <form class="form-row" action="{% url 'main_page' %}" method="get">
                 {#                Поле выбора Препода или группы#}
-                <select class="js-selectize" name="search" placeholder="Выберите город">
+            {{ MondayN }}
+                <select class="js-selectize" name="search" placeholder="Выберите город" onchange="this.form.submit()">
                     <option value=""></option>
                     <optgroup label="Преподаватели">
                         {% for teach in teacher_name %}
@@ -24,27 +25,11 @@
                         {% endfor %}
                     </optgroup>
                 </select>
-                <button type="submit">Поисk</button>
-                {#                <div class="input-group">#}
-                {#                    <div id="search-autocomplete" class="form-outline">#}
-                {#                        <input name="search" type="text" id="form1" class="form-control"/>#}
-                {#                        <label class="form-label" for="form1">Поиск</label>#}
-                {#                    </div>#}
-                {#                    <button type="submit" class="btn btn-primary">#}
-                {#                        <i class="fas fa-search"></i>#}
-                {#                    </button>#}
-                {#                </div>#}
 
-                {#            Суперпользователи#}
-                {#                {% if request.user.is_superuser %}#}
-                {#                    <div class="form-group mx-sm-3 mb-2">#}
-                {#                        <input type="search" class="form-control" name="date_start" placeholder="Дата начала">#}
-                {#                    </div>#}
-                {#                    <div class="form-group mx-sm-3 mb-2">#}
-                {#                        <input type="date" class="form-control" name="date_end" placeholder="Дата конца">#}
-                {#                    </div>#}
-                {#                {% endif %}#}
             </form>
+            <div class="nahuy">
+                <p>Ахуеннейший текстуля</p>
+            </div>
             <button type="button" class="themetoggle btn btn-them btn-floating">
                 <span class="material-icons">light_mode</span>
             </button>
@@ -119,3 +104,23 @@
         </div>
     </div>
 {% endblock content %}
+{#Что это?#}
+{#                <div class="input-group">#}
+{#                    <div id="search-autocomplete" class="form-outline">#}
+{#                        <input name="search" type="text" id="form1" class="form-control"/>#}
+{#                        <label class="form-label" for="form1">Поиск</label>#}
+{#                    </div>#}
+{#                    <button type="submit" class="btn btn-primary">#}
+{#                        <i class="fas fa-search"></i>#}
+{#                    </button>#}
+{#                </div>#}
+
+{#            Суперпользователи#}
+{#                {% if request.user.is_superuser %}#}
+{#                    <div class="form-group mx-sm-3 mb-2">#}
+{#                        <input type="search" class="form-control" name="date_start" placeholder="Дата начала">#}
+{#                    </div>#}
+{#                    <div class="form-group mx-sm-3 mb-2">#}
+{#                        <input type="date" class="form-control" name="date_end" placeholder="Дата конца">#}
+{#                    </div>#}
+{#                {% endif %}#}

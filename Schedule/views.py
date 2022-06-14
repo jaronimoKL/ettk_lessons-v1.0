@@ -1,8 +1,9 @@
 import calendar
 from datetime import datetime, timedelta, date
 
-from dateutil.relativedelta import relativedelta, MO, TU
+from dateutil.relativedelta import relativedelta, MO, TU, WE, TH, FR, SA
 from django.db.models import Q
+from django.http import JsonResponse
 from django.shortcuts import render
 
 from config.settings import USER_RANGE_START, USER_RANGE_END
@@ -20,6 +21,24 @@ def main_page(request):
     previous = today + relativedelta(weekday=MO(-2))
     current = today + relativedelta(weekday=MO(-1))
     next = today + relativedelta(weekday=MO(1))
+    MondayP = previous + relativedelta(weekday=MO(-1))
+    MondayC = today + relativedelta(weekday=MO(-1))
+    MondayN = next + relativedelta(weekday=MO(-1))
+    TuesdayP = previous + relativedelta(weekday=TU(-1))
+    TuesdayC = today + relativedelta(weekday=TU(-1))
+    TuesdayN = next + relativedelta(weekday=TU(-1))
+    WednesdayP = previous + relativedelta(weekday=WE(-1))
+    WednesdayC = today + relativedelta(weekday=WE(-1))
+    WednesdayN = next + relativedelta(weekday=WE(-1))
+    ThursdayP = previous + relativedelta(weekday=TH(-1))
+    ThursdayC = today + relativedelta(weekday=TH(-1))
+    ThursdayN = next + relativedelta(weekday=TH(-1))
+    FridayP = previous + relativedelta(weekday=FR(-1))
+    FridayC = today + relativedelta(weekday=FR(-1))
+    FridayN = next + relativedelta(weekday=FR(-1))
+    SaturdayP = previous + relativedelta(weekday=SA(-1))
+    SaturdayC = today + relativedelta(weekday=SA(-1))
+    SaturdayN = next + relativedelta(weekday=SA(-1))
     if not search == None:
         timetable = TimeTable.objects.filter(
             Q(teacher__first_name=search) | Q(teacher__last_name=search) |
@@ -32,6 +51,24 @@ def main_page(request):
             'previous': previous,
             'current': current,
             'next': next,
+            'MondayP': MondayP,
+            'TuesdayP': TuesdayP,
+            'WednesdayP': WednesdayP,
+            'ThursdayP': ThursdayP,
+            'FridayP': FridayP,
+            'SaturdayP': SaturdayP,
+            'MondayC': MondayC,
+            'TuesdayC': TuesdayC,
+            'WednesdayC': WednesdayC,
+            'ThursdayC': ThursdayC,
+            'FridayC': FridayC,
+            'SaturdayC': SaturdayC,
+            'MondayN': MondayN,
+            'TuesdayN': TuesdayN,
+            'WednesdayN': WednesdayN,
+            'ThursdayN': ThursdayN,
+            'FridayN': FridayN,
+            'SaturdayN': SaturdayN,
             'teacher_name': teach,
             'group_name': group,
             'cabinet_name': cabinet,
@@ -121,3 +158,4 @@ class LessonFilterView(views.generic.ListView):
                     ), date__range=[datetime.now() - timedelta(days=USER_RANGE_START),
                                     datetime.now() + timedelta(days=USER_RANGE_END)]).order_by('-number').order_by(
                     '-date')
+

@@ -66,6 +66,7 @@ class TimeTable(models.Model):
     cabinet = models.ForeignKey(Cabinet, verbose_name="Кабинет", on_delete=models.CASCADE)
     lesson = models.ForeignKey(Lesson, verbose_name="Занятие", on_delete=models.CASCADE)
     subgroups = models.ForeignKey(Subgroups, verbose_name="Подгруппы", on_delete=models.CASCADE)
+    remote = models.BooleanField("Дистант?", default=False)
     reduction = models.BooleanField("Сокращенный день?", default=False)
 
     def __str__(self):

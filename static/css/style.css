@@ -71,3 +71,6 @@ body {
 .input:focus ~ .div__list {
     display: block !important;
 }
+.row .col .nahuy {
+    background-color: #ff9c46 !important;
+}
