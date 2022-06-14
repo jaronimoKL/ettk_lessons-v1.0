@@ -1,5 +1,7 @@
-from datetime import datetime, timedelta
+import calendar
+from datetime import datetime, timedelta, date
 
+from dateutil.relativedelta import relativedelta, MO, TU
 from django.db.models import Q
 from django.shortcuts import render
 
@@ -13,12 +15,32 @@ def main_page(request):
     teach = Teacher.objects.all().order_by('last_name')
     group = Group.objects.all().order_by('group_name')
     cabinet = Cabinet.objects.all().order_by('cabinet_name')
-    response_data = {
-        'teacher_name': teach,
-        'group_name': group,
-        'cabinet_name': cabinet,
-    }
-    return render(request, 'lessons_list.html', response_data)
+    search = request.GET.get('search')
+    today = date.today()
+    previous = today + relativedelta(weekday=MO(-2))
+    current = today + relativedelta(weekday=MO(-1))
+    next = today + relativedelta(weekday=MO(1))
+    if not search == None:
+        timetable = TimeTable.objects.filter(
+            Q(teacher__first_name=search) | Q(teacher__last_name=search) |
+            Q(teacher__middle_name=search) | Q(cabinet__cabinet_name=search) | Q(
+                group__group_name__startswith=search
+            ), date__range=[datetime.now() - timedelta(days=USER_RANGE_START),
+                            datetime.now() + timedelta(days=USER_RANGE_END)]).order_by('-date')
+        return render(request, 'lessons_list.html', {
+            'today': today,
+            'previous': previous,
+            'current': current,
+            'next': next,
+            'teacher_name': teach,
+            'group_name': group,
+            'cabinet_name': cabinet,
+            'timetable': timetable})
+    else:
+        return render(request, 'lessons_list.html', {
+            'teacher_name': teach,
+            'group_name': group,
+            'cabinet_name': cabinet})
 
 
 # class LessonsDetail(views.generic.ListView):
@@ -31,6 +53,17 @@ def main_page(request):
 #         else:
 #             return TimeTable.objects.filter(date__range=[datetime.now() - timedelta(days=USER_RANGE_START),
 #                                                          datetime.now() + timedelta(days=USER_RANGE_END)]).order_by('-date')
+
+# def filter_page(request):
+#     teach = Teacher.objects.all().order_by('last_name')
+#     group = Group.objects.all().order_by('group_name')
+#     cabinet = Cabinet.objects.all().order_by('cabinet_name')
+#     response_data = {
+#         'teacher_name': teach,
+#         'group_name': group,
+#         'cabinet_name': cabinet,
+#     }
+#     return render(request, 'lessons_list.html', response_data)
 
 
 class LessonFilterView(views.generic.ListView):

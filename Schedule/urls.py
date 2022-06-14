@@ -4,5 +4,5 @@ from django.views.decorators.cache import cache_page
 
 urlpatterns = [
     path('', views.main_page, name='main_page'),
-    path('filter/', views.LessonFilterView.as_view(), name='lesson_filter')
+    # path('filter/', views.LessonFilterView.as_view(), name='lesson_filter')
 ]
