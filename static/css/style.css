@@ -10,7 +10,6 @@ html{
     font-family: Inter, sans-serif!important;
 }
 .dark html{
-    font-size: 18px;
     color: white;
 }
 
@@ -26,7 +25,6 @@ body {
     color: #000!important;
 }
 .dark body {
-    font-family: sans-serif;
     background: #202225!important;
     color: #fff!important;
 }
@@ -49,9 +47,19 @@ body {
     height: 90px;
     margin-bottom: 40px;
 }
-
+/*как лучше?*/
 h2 {
     font-size: 32px!important;
+}
+.dark h2 {
+    font-size: 32px!important;
+}
+
+.form-floating{
+    width: 100% !important;
+}
+.form-row {
+    margin: 0!important;
 }
 
 .form-select {
@@ -67,6 +75,14 @@ h2 {
     background-color: #42464D;
     color: white;
 }
+optgroup {
+    font-size: 26px !important;
+    line-height: 30px !important;
+    font-weight: 500 !important;
+}
+option {
+    font-size: 22px;
+}
 .dark option {
     background-color: #42464D;
     color: white;
@@ -79,9 +95,29 @@ h2 {
     padding-top: 2.825rem!important;
 }
 
-.nav-justified .nav-item .nav-link {
-    width: 100% !important;
+.container {
+    max-width: 70% !important;
 }
+
+.nav-week, .nav-day {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px !important;
+}
+
+.nav-week-li {
+    width: 33% !important;
+}
+
+.nav-week-li button, .nav-day li button {
+    width: 100%;
+}
+
+.nav-day li {
+    width: 16.6% !important;
+}
+
 .dark .nav-tabs .nav-link.active {
     color: #7595FF;
     border-color: #7595FF;
@@ -104,7 +140,7 @@ h2 {
     margin-bottom: 10px;
     height: 60px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .dark .div {
     background-color: #2F3136;

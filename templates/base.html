@@ -27,6 +27,13 @@
 </head>
 <body class="body">
 <div class="container">
+    <header class="header">
+        <h2>ЕЭТК #расписание</h2>
+        {#        Кнопка смены темы#}
+        <button type="button" class="themetoggle btn btn-them btn-floating">
+            <span class="material-icons">light_mode</span>
+        </button>
+    </header>
     {% block content %}
 
     {% endblock content %}
@@ -34,9 +41,3 @@
 <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
-{# Monday            #}
-{# Tuesday            #}
-{# Wednesday         #}
-{# Thursday            #}
-{# Friday            #}
-{# Saturday            #}
