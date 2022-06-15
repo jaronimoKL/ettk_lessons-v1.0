@@ -40,13 +40,14 @@
             {# Переключатели недели #}
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="previous-tab" data-bs-toggle="tab" data-bs-target="#previous"
-                            type="button" role="tab" aria-controls="previous" aria-selected="true">Previous
+                    <button class="nav-link" id="previous-tab" data-bs-toggle="tab" data-bs-target="#previous"
+                            type="button" role="tab" aria-controls="previous" aria-selected="false">Previous
                     </button>
+
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="current-tab" data-bs-toggle="tab" data-bs-target="#current"
-                            type="button" role="tab" aria-controls="current" aria-selected="false">Current
+                    <button class="nav-link active" id="current-tab" data-bs-toggle="tab" data-bs-target="#current"
+                            type="button" role="tab" aria-controls="current" aria-selected="true">Current
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
@@ -57,134 +58,794 @@
             </ul>
             {#        Контент переключателей недели#}
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="previous" role="tabpanel" aria-labelledby="previous-tab">
+                <div class="tab-pane fade" id="previous" role="tabpanel" aria-labelledby="previous-tab">
                     {#                    Переключатели дней прошлой недели#}
                     <ul class="nav nav-tabs" id="myTabP" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="mondayp-tab" data-bs-toggle="tab"
-                                    data-bs-target="#mondayp" type="button" role="tab" aria-controls="monday"
+                                    data-bs-target="#mondayp" type="button" role="tab" aria-controls="mondayp"
                                     aria-selected="true">Monday
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="tuesdayp-tab" data-bs-toggle="tab" data-bs-target="#tuesdayp"
-                                    type="button" role="tab" aria-controls="tuesday" aria-selected="false">Tuesday
+                                    type="button" role="tab" aria-controls="tuesdayp" aria-selected="false">Tuesday
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="wednesdayp-tab" data-bs-toggle="tab"
-                                    data-bs-target="#wednesdayp" type="button" role="tab" aria-controls="wednesday"
+                                    data-bs-target="#wednesdayp" type="button" role="tab" aria-controls="wednesdayp"
                                     aria-selected="false">Wednesday
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="thursdayp-tab" data-bs-toggle="tab" data-bs-target="#thursdayp"
-                                    type="button" role="tab" aria-controls="thursday" aria-selected="false">Thursday
+                                    type="button" role="tab" aria-controls="thursdayp" aria-selected="false">Thursday
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="fridayp-tab" data-bs-toggle="tab" data-bs-target="#fridayp"
-                                    type="button" role="tab" aria-controls="friday" aria-selected="false">Friday
+                                    type="button" role="tab" aria-controls="fridayp" aria-selected="false">Friday
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="saturdayp-tab" data-bs-toggle="tab" data-bs-target="#saturdayp"
-                                    type="button" role="tab" aria-controls="saturday" aria-selected="false">Saturday
+                                    type="button" role="tab" aria-controls="saturdayp" aria-selected="false">Saturday
                             </button>
                         </li>
                     </ul>
-                    {#                    Контент переключателей дней прошлой недели#}
+                    {#            Контент переключателей дней прошлой недели#}
                     <div class="tab-content" id="myTabContentP">
+                        {#                    Прошлый понедельник#}
                         <div class="tab-pane fade show active" id="mondayp" role="tabpanel"
                              aria-labelledby="mondayp-tab">
                             {% for table in timetable %}
                                 {% if table.date == MondayP %}
-                                            <div class="div">{{ table.number }}{{ table.date }}{{ table.group.group_name }}{{ table.teacher.last_name }}{{ table.cabinet.cabinet_name }}{{ table.lesson.lesson_name }}{{ table.lesson.subgroups }}</div>
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
                                 {% endif %}
                             {% endfor %}
                         </div>
+                        {#                    Прошлый вторник#}
                         <div class="tab-pane fade" id="tuesdayp" role="tabpanel" aria-labelledby="tuesdayp-tab">
                             {% for table in timetable %}
                                 {% if table.date == TuesdayP %}
-                                    <ul>
-                                        <li>{{ table.number }}</li>
-                                        <li>{{ table.date }}</li>
-                                        <li>{{ table.group.group_name }}</li>
-                                        <li>{{ table.teacher.last_name }}</li>
-                                        <li>{{ table.cabinet.cabinet_name }}</li>
-                                        <li>{{ table.lesson.lesson_name }}</li>
-                                        <li>{{ table.lesson.subgroups }}</li>
-                                    </ul>
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
                                 {% endif %}
                             {% endfor %}
                         </div>
+                        {#                    Прошлая среда#}
                         <div class="tab-pane fade" id="wednesdayp" role="tabpanel" aria-labelledby="wednesdayp-tab">
                             {% for table in timetable %}
                                 {% if table.date == WednesdayP %}
-                                    <ul>
-                                        <li>{{ table.number }}</li>
-                                        <li>{{ table.date }}</li>
-                                        <li>{{ table.group.group_name }}</li>
-                                        <li>{{ table.teacher.last_name }}</li>
-                                        <li>{{ table.cabinet.cabinet_name }}</li>
-                                        <li>{{ table.lesson.lesson_name }}</li>
-                                        <li>{{ table.lesson.subgroups }}</li>
-                                    </ul>
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
                                 {% endif %}
                             {% endfor %}
                         </div>
+                        {#                    Прошлый четверг#}
                         <div class="tab-pane fade" id="thursdayp" role="tabpanel" aria-labelledby="thursdayp-tab">
                             {% for table in timetable %}
                                 {% if table.date == ThursdayP %}
-                                    <ul>
-                                        <li>{{ table.number }}</li>
-                                        <li>{{ table.date }}</li>
-                                        <li>{{ table.group.group_name }}</li>
-                                        <li>{{ table.teacher.last_name }}</li>
-                                        <li>{{ table.cabinet.cabinet_name }}</li>
-                                        <li>{{ table.lesson.lesson_name }}</li>
-                                        <li>{{ table.lesson.subgroups }}</li>
-                                    </ul>
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
                                 {% endif %}
                             {% endfor %}
                         </div>
+                        {#                    Прошлая пятница#}
                         <div class="tab-pane fade" id="fridayp" role="tabpanel" aria-labelledby="fridayp-tab">
                             {% for table in timetable %}
                                 {% if table.date == FridayP %}
-                                    <ul>
-                                        <li>{{ table.number }}</li>
-                                        <li>{{ table.date }}</li>
-                                        <li>{{ table.group.group_name }}</li>
-                                        <li>{{ table.teacher.last_name }}</li>
-                                        <li>{{ table.cabinet.cabinet_name }}</li>
-                                        <li>{{ table.lesson.lesson_name }}</li>
-                                        <li>{{ table.lesson.subgroups }}</li>
-                                    </ul>
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
                                 {% endif %}
                             {% endfor %}
                         </div>
+                        {#                    Прошлая суббота#}
                         <div class="tab-pane fade" id="saturdayp" role="tabpanel" aria-labelledby="saturdayp-tab">
                             {% for table in timetable %}
                                 {% if table.date == SaturdayP %}
-                                    <ul>
-                                        <li>{{ table.number }}</li>
-                                        <li>{{ table.date }}</li>
-                                        <li>{{ table.group.group_name }}</li>
-                                        <li>{{ table.teacher.last_name }}</li>
-                                        <li>{{ table.cabinet.cabinet_name }}</li>
-                                        <li>{{ table.lesson.lesson_name }}</li>
-                                        <li>{{ table.lesson.subgroups }}</li>
-                                    </ul>
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
                                 {% endif %}
                             {% endfor %}
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="current" role="tabpanel" aria-labelledby="current-tab">
-
+                <div class="tab-pane fade show active" id="current" role="tabpanel" aria-labelledby="current-tab">
+                    {#                    Переключатели дней текущей недели#}
+                    <ul class="nav nav-tabs" id="myTabС" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="mondayс-tab" data-bs-toggle="tab"
+                                    data-bs-target="#mondayс" type="button" role="tab" aria-controls="mondayc"
+                                    aria-selected="true">Monday
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tuesdayс-tab" data-bs-toggle="tab" data-bs-target="#tuesdayс"
+                                    type="button" role="tab" aria-controls="tuesdayc" aria-selected="false">Tuesday
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="wednesdayс-tab" data-bs-toggle="tab"
+                                    data-bs-target="#wednesdayс" type="button" role="tab" aria-controls="wednesdayc"
+                                    aria-selected="false">Wednesday
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="thursdayс-tab" data-bs-toggle="tab" data-bs-target="#thursdayс"
+                                    type="button" role="tab" aria-controls="thursdayc" aria-selected="false">Thursday
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="fridayс-tab" data-bs-toggle="tab" data-bs-target="#fridayс"
+                                    type="button" role="tab" aria-controls="fridayc" aria-selected="false">Friday
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="saturdayс-tab" data-bs-toggle="tab" data-bs-target="#saturdayс"
+                                    type="button" role="tab" aria-controls="saturdayc" aria-selected="false">Saturday
+                            </button>
+                        </li>
+                    </ul>
+                    {#            Контент переключателей текущих дней недели#}
+                    <div class="tab-content" id="myTabContentC">
+                        {#                Текущий понедельник#}
+                        <div class="tab-pane fade show active" id="mondayc" role="tabpanel"
+                             aria-labelledby="mondayc-tab">
+                            {% for table in timetable %}
+                                {% if table.date == MondayC %}
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        {#                Текущий вторник#}
+                        <div class="tab-pane fade" id="tuesdayc" role="tabpanel" aria-labelledby="tuesdayc-tab">
+                            {% for table in timetable %}
+                                {% if table.date == TuesdayC %}
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        {#                Текущая среда#}
+                        <div class="tab-pane fade" id="wednesdayc" role="tabpanel" aria-labelledby="wednesdayc-tab">
+                            {% for table in timetable %}
+                                {% if table.date == WednesdayC %}
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        {#                Текущий четверг#}
+                        <div class="tab-pane fade" id="thursdayc" role="tabpanel" aria-labelledby="thursdayc-tab">
+                            {% for table in timetable %}
+                                {% if table.date == ThursdayC %}
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        {#                Текущая пятница#}
+                        <div class="tab-pane fade" id="fridayc" role="tabpanel" aria-labelledby="fridayc-tab">
+                            {% for table in timetable %}
+                                {% if table.date == FridayC %}
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        {#                Текущая суббота#}
+                        <div class="tab-pane fade" id="saturdayc" role="tabpanel" aria-labelledby="saturdayc-tab">
+                            {% for table in timetable %}
+                                {% if table.date == SaturdayC %}
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="next" role="tabpanel" aria-labelledby="next-tab">
-
+                    {#                    Переключатели дней будущей недели#}
+                    <ul class="nav nav-tabs" id="myTabN" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="mondayn-tab" data-bs-toggle="tab"
+                                    data-bs-target="#mondayn" type="button" role="tab" aria-controls="mondayn"
+                                    aria-selected="true">Monday
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tuesdayn-tab" data-bs-toggle="tab" data-bs-target="#tuesdayn"
+                                    type="button" role="tab" aria-controls="tuesdayn" aria-selected="false">Tuesday
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="wednesdayn-tab" data-bs-toggle="tab"
+                                    data-bs-target="#wednesdayn" type="button" role="tab" aria-controls="wednesdayn"
+                                    aria-selected="false">Wednesday
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="thursdayn-tab" data-bs-toggle="tab" data-bs-target="#thursdayn"
+                                    type="button" role="tab" aria-controls="thursdayn" aria-selected="false">Thursday
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="fridayn-tab" data-bs-toggle="tab" data-bs-target="#fridayn"
+                                    type="button" role="tab" aria-controls="fridayn" aria-selected="false">Friday
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="saturdayn-tab" data-bs-toggle="tab" data-bs-target="#saturdayn"
+                                    type="button" role="tab" aria-controls="saturdayn" aria-selected="false">Saturday
+                            </button>
+                        </li>
+                    </ul>
+                    {#            Контент переключателей будущих дней недели#}
+                    <div class="tab-content" id="myTabContentN">
+                        {#            Будущий понедельник#}
+                        <div class="tab-pane fade show active" id="mondayn" role="tabpanel"
+                             aria-labelledby="mondayn-tab">
+                            {% for table in timetable %}
+                                {% if table.date == MondayN %}
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        {#            Будущий вторник#}
+                        <div class="tab-pane fade" id="tuesdayn" role="tabpanel" aria-labelledby="tuesdayn-tab">
+                            {% for table in timetable %}
+                                {% if table.date == TuesdayN %}
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        {#            Будущая среда#}
+                        <div class="tab-pane fade" id="wednesdayn" role="tabpanel" aria-labelledby="wednesdayn-tab">
+                            {% for table in timetable %}
+                                {% if table.date == WednesdayN %}
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        {#            Будущий четверг#}
+                        <div class="tab-pane fade" id="thursdayn" role="tabpanel" aria-labelledby="thursdayn-tab">
+                            {% for table in timetable %}
+                                {% if table.date == ThursdayN %}
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        {#            Будущая пятница#}
+                        <div class="tab-pane fade" id="fridayn" role="tabpanel" aria-labelledby="fridayn-tab">
+                            {% for table in timetable %}
+                                {% if table.date == FridayN %}
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        {#            Будущая суббота#}
+                        <div class="tab-pane fade" id="saturdayn" role="tabpanel" aria-labelledby="saturdayn-tab">
+                            {% for table in timetable %}
+                                {% if table.date == SaturdayN %}
+                                    <div class="div">
+                                        <div>
+                                            {{ table.number }}
+                                        </div>
+                                        <div>
+                                            {% if table.number == 1 %}
+                                                8:30 - 10:05
+                                            {% elif table.number == 2 %}
+                                                10:15 - 11:50
+                                            {% elif table.number == 3 %}
+                                                12:50 - 14:25
+                                            {% elif table.number == 4 %}
+                                                14:35 - 16:10
+                                            {% elif table.number == 5 %}
+                                                16:15 - 17:40
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            {{ table.lesson.lesson_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div>
+                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        </div>
+                                        <div>
+                                            {{ table.cabinet.cabinet_name }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -48,7 +48,7 @@ class Lesson(models.Model):
 
 
 class Subgroups(models.Model):
-    subgroups_name = models.CharField("Номер подгруппы", max_length=3, )
+    subgroups_name = models.CharField("Номер подгруппы", max_length=3,)
 
     def __str__(self):
         return f"{self.subgroups_name}"
