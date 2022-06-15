@@ -4,101 +4,113 @@
 {% block content %}
     <div class="row">
         <div class="col text-center">
+        {{ WednesdayC }}
             {#            Форм поиска#}
-            <form class="form-row" action="{% url 'main_page' %}" method="get">
-                {#                Поле выбора Препода или группы#}
-                {{ previous }}<br>
-                {{ current }}<br>
-                {{ next }}<br>
-                {{ MondayP }}<br>
-                {{ MondayC }}<br>
-                {{ MondayN }}<br>
+            <form id="MyForm" class="form-row" action="{% url 'main_page' %}" method="get">
                 {#            Поле поиска#}
-                <select class="js-selectize" name="search" placeholder="Выберите город" onchange="this.form.submit()">
-                    <option value=""></option>
-                    <optgroup label="Преподаватели">
-                        {% for teach in teacher_name %}
-                            <option value="{{ teach.last_name }}">{{ teach.last_name }}</option>
-                        {% endfor %}
-                    </optgroup>
-                    <optgroup label="Группы">
-                        {% for group in group_name %}
-                            <option value="{{ group.group_name }}">{{ group.group_name }}</option>
-                        {% endfor %}
-                    </optgroup>
-                    <optgroup label="Кабинет">
-                        {% for cabinet in cabinet_name %}
-                            <option value="{{ cabinet.cabinet_name }}">{{ cabinet.cabinet_name }}</option>
-                        {% endfor %}
-                    </optgroup>
-                </select>
+                <div class="form-floating">
+                    <label for="floatingSelect">{{ search }}</label>
+                    <select onchange="this.form.submit()" name="search" class="form-select" id="floatingSelect"
+                            aria-label="Floating label select example">
+                        <option class="opt">Введите Преподавателя,группу или кабинет</option>
+                        <optgroup label="Преподаватели">
+                            {% for teach in teacher_name %}
+                                <option value="{{ teach.last_name }}">{{ teach.last_name }}</option>
+                            {% endfor %}
+                        </optgroup>
+                        <optgroup label="Группы">
+                            {% for group in group_name %}
+                                <option value="{{ group.group_name }}">{{ group.group_name }}</option>
+                            {% endfor %}
+                        </optgroup>
+                        <optgroup label="Кабинет">
+                            {% for cabinet in cabinet_name %}
+                                <option value="{{ cabinet.cabinet_name }}">{{ cabinet.cabinet_name }}</option>
+                            {% endfor %}
+                        </optgroup>
+                    </select>
             </form>
             {#        Кнопка смены темы#}
             <button type="button" class="themetoggle btn btn-them btn-floating">
                 <span class="material-icons">light_mode</span>
             </button>
             {# Переключатели недели #}
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="previous-tab" data-bs-toggle="tab" data-bs-target="#previous"
-                            type="button" role="tab" aria-controls="previous" aria-selected="false">Previous
-                    </button>
-
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="current-tab" data-bs-toggle="tab" data-bs-target="#current"
-                            type="button" role="tab" aria-controls="current" aria-selected="true">Current
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab1"
+                            type="button" role="tab" aria-controls="tab1" aria-selected="false">Previous
                     </button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="next-tab" data-bs-toggle="tab" data-bs-target="#next" type="button"
-                            role="tab" aria-controls="next" aria-selected="false">Next
+                <li class="nav-item">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab2"
+                            type="button" role="tab" aria-controls="tab2" aria-selected="true">Current
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab3"
+                            type="button" role="tab" aria-controls="tab3" aria-selected="false">Next
                     </button>
                 </li>
             </ul>
-            {#        Контент переключателей недели#}
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade" id="previous" role="tabpanel" aria-labelledby="previous-tab">
-                    {#                    Переключатели дней прошлой недели#}
-                    <ul class="nav nav-tabs" id="myTabP" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="mondayp-tab" data-bs-toggle="tab"
-                                    data-bs-target="#mondayp" type="button" role="tab" aria-controls="mondayp"
-                                    aria-selected="true">Monday
+            {# Контент неделей #}
+            <div class="tab-content">
+                {#            Прошлая неделя#}
+                <div role="tabpanel" class="tab-pane fade" id="tab1">
+                    {#                Переключатели дней прошлой недели#}
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == MondayP %} active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab11"
+                                    type="button" role="tab" aria-controls="tab11"
+                                    aria-selected="{% if timetable.date == MondayP %} true {% else %} false {% endif %}">
+                                Monday
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="tuesdayp-tab" data-bs-toggle="tab" data-bs-target="#tuesdayp"
-                                    type="button" role="tab" aria-controls="tuesdayp" aria-selected="false">Tuesday
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == TuesdayP %} active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab12"
+                                    type="button" role="tab" aria-controls="tab12"
+                                    aria-selected="{% if timetable.date == TuesdayP %} true {% else %} false {% endif %}">
+                                Tuesday
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="wednesdayp-tab" data-bs-toggle="tab"
-                                    data-bs-target="#wednesdayp" type="button" role="tab" aria-controls="wednesdayp"
-                                    aria-selected="false">Wednesday
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == WednesdayP %} active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab13"
+                                    type="button" role="tab" aria-controls="tab13"
+                                    aria-selected="{% if timetable.date == WednesdayP %} true {% else %} false {% endif %}">
+                                Wednesday
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="thursdayp-tab" data-bs-toggle="tab" data-bs-target="#thursdayp"
-                                    type="button" role="tab" aria-controls="thursdayp" aria-selected="false">Thursday
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == ThursdayP %} active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab14"
+                                    type="button" role="tab" aria-controls="tab14"
+                                    aria-selected="{% if timetable.date == ThursdayP %} true {% else %} false {% endif %}">
+                                Thursday
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="fridayp-tab" data-bs-toggle="tab" data-bs-target="#fridayp"
-                                    type="button" role="tab" aria-controls="fridayp" aria-selected="false">Friday
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == FridayP %} active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab15"
+                                    type="button" role="tab" aria-controls="tab15"
+                                    aria-selected="{% if timetable.date == FridayP %} true {% else %} false {% endif %}">
+                                Friday
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="saturdayp-tab" data-bs-toggle="tab" data-bs-target="#saturdayp"
-                                    type="button" role="tab" aria-controls="saturdayp" aria-selected="false">Saturday
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == SaturdayP %} active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab16"
+                                    type="button" role="tab" aria-controls="tab16"
+                                    aria-selected="{% if timetable.date == SaturdayP %} true {% else %} false {% endif %}">
+                                Saturday
                             </button>
                         </li>
                     </ul>
-                    {#            Контент переключателей дней прошлой недели#}
-                    <div class="tab-content" id="myTabContentP">
+                    {#                Контент дней прошлой недели#}
+                    <div class="tab-content">
                         {#                    Прошлый понедельник#}
-                        <div class="tab-pane fade show active" id="mondayp" role="tabpanel"
-                             aria-labelledby="mondayp-tab">
+                        <div role="tabpanel" class="tab-pane fade {% if timetable.date == MondayP %} show active {% endif %}" id="tab11">
                             {% for table in timetable %}
                                 {% if table.date == MondayP %}
                                     <div class="div">
@@ -132,10 +144,9 @@
                                         </div>
                                     </div>
                                 {% endif %}
-                            {% endfor %}
-                        </div>
+                            {% endfor %}</div>
                         {#                    Прошлый вторник#}
-                        <div class="tab-pane fade" id="tuesdayp" role="tabpanel" aria-labelledby="tuesdayp-tab">
+                        <div role="tabpanel" class="tab-pane fade {% if timetable.date == TuesdayP %} show active {% endif %}" id="tab12">
                             {% for table in timetable %}
                                 {% if table.date == TuesdayP %}
                                     <div class="div">
@@ -172,7 +183,7 @@
                             {% endfor %}
                         </div>
                         {#                    Прошлая среда#}
-                        <div class="tab-pane fade" id="wednesdayp" role="tabpanel" aria-labelledby="wednesdayp-tab">
+                        <div role="tabpanel" class="tab-pane fade {% if timetable.date == WednesdayP %} show active {% endif %}" id="tab13">
                             {% for table in timetable %}
                                 {% if table.date == WednesdayP %}
                                     <div class="div">
@@ -209,7 +220,7 @@
                             {% endfor %}
                         </div>
                         {#                    Прошлый четверг#}
-                        <div class="tab-pane fade" id="thursdayp" role="tabpanel" aria-labelledby="thursdayp-tab">
+                        <div role="tabpanel" class="tab-pane fade {% if timetable.date == ThursdayP %} show active {% endif %}" id="tab14">
                             {% for table in timetable %}
                                 {% if table.date == ThursdayP %}
                                     <div class="div">
@@ -246,7 +257,7 @@
                             {% endfor %}
                         </div>
                         {#                    Прошлая пятница#}
-                        <div class="tab-pane fade" id="fridayp" role="tabpanel" aria-labelledby="fridayp-tab">
+                        <div role="tabpanel" class="tab-pane fade {% if timetable.date == FridayP %} show active {% endif %}" id="tab15">
                             {% for table in timetable %}
                                 {% if table.date == FridayP %}
                                     <div class="div">
@@ -283,7 +294,7 @@
                             {% endfor %}
                         </div>
                         {#                    Прошлая суббота#}
-                        <div class="tab-pane fade" id="saturdayp" role="tabpanel" aria-labelledby="saturdayp-tab">
+                        <div role="tabpanel" class="tab-pane fade {% if timetable.date == SaturdayP %} show active {% endif %}" id="tab16">
                             {% for table in timetable %}
                                 {% if table.date == SaturdayP %}
                                     <div class="div">
@@ -321,47 +332,63 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade show active" id="current" role="tabpanel" aria-labelledby="current-tab">
-                    {#                    Переключатели дней текущей недели#}
-                    <ul class="nav nav-tabs" id="myTabС" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="mondayс-tab" data-bs-toggle="tab"
-                                    data-bs-target="#mondayс" type="button" role="tab" aria-controls="mondayc"
-                                    aria-selected="true">Monday
+                {#            Текущая неделя#}
+                <div role="tabpanel" class="tab-pane fade show active" id="tab2">
+                    {#                Переключатели дней текущей недели#}
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == MondayC %} active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab21"
+                                    type="button" role="tab" aria-controls="tab21"
+                                    aria-selected="{% if timetable.date == MondayC %} true {% else %} false {% endif %}">
+                                Monday
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="tuesdayс-tab" data-bs-toggle="tab" data-bs-target="#tuesdayс"
-                                    type="button" role="tab" aria-controls="tuesdayc" aria-selected="false">Tuesday
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == ThursdayC %} active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab22"
+                                    type="button" role="tab" aria-controls="tab22"
+                                    aria-selected="{% if timetable.date == ThursdayC %} true {% else %} false {% endif %}">
+                                Tuesday
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="wednesdayс-tab" data-bs-toggle="tab"
-                                    data-bs-target="#wednesdayс" type="button" role="tab" aria-controls="wednesdayc"
-                                    aria-selected="false">Wednesday
+                        <li class="nav-item">
+                            <button class="nav-link {% if date in timetable == WednesdayC %} active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab23"
+                                    type="button" role="tab" aria-controls="tab23"
+                                    aria-selected="{% if date in timetable == WednesdayC %} true {% else %} false {% endif %}">
+                                Wednesday
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="thursdayс-tab" data-bs-toggle="tab" data-bs-target="#thursdayс"
-                                    type="button" role="tab" aria-controls="thursdayc" aria-selected="false">Thursday
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == ThursdayC %} active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab24"
+                                    type="button" role="tab" aria-controls="tab24"
+                                    aria-selected="{% if timetable.date == ThursdayC %} true {% else %} false {% endif %}">
+                                Thursday
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="fridayс-tab" data-bs-toggle="tab" data-bs-target="#fridayс"
-                                    type="button" role="tab" aria-controls="fridayc" aria-selected="false">Friday
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == FridayC %} active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab25"
+                                    type="button" role="tab" aria-controls="tab25"
+                                    aria-selected="{% if timetable.date == FridayC %} true {% else %} false {% endif %}">
+                                Friday
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="saturdayс-tab" data-bs-toggle="tab" data-bs-target="#saturdayс"
-                                    type="button" role="tab" aria-controls="saturdayc" aria-selected="false">Saturday
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == SaturdayC %} active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab26"
+                                    type="button" role="tab" aria-controls="tab26"
+                                    aria-selected="{% if timetable.date == SaturdayC %} true {% else %} false {% endif %}">
+                                Saturday
                             </button>
                         </li>
                     </ul>
-                    {#            Контент переключателей текущих дней недели#}
-                    <div class="tab-content" id="myTabContentC">
-                        {#                Текущий понедельник#}
-                        <div class="tab-pane fade show active" id="mondayc" role="tabpanel"
-                             aria-labelledby="mondayc-tab">
+                    {#                Контент дней текущей недели#}
+                    <div class="tab-content">
+                        {#                    Текущий понедельник#}
+                        <div role="tabpanel" class="tab-pane fade {% if timetable.date == MondayC %} show active {% endif %}" id="tab21">
                             {% for table in timetable %}
                                 {% if table.date == MondayC %}
                                     <div class="div">
@@ -397,8 +424,8 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        {#                Текущий вторник#}
-                        <div class="tab-pane fade" id="tuesdayc" role="tabpanel" aria-labelledby="tuesdayc-tab">
+                        {#                    Текущий вторник#}
+                        <div role="tabpanel" class="tab-pane fade {% if timetable.date == TuesdayC %} show active {% endif %}" id="tab22">
                             {% for table in timetable %}
                                 {% if table.date == TuesdayC %}
                                     <div class="div">
@@ -434,8 +461,8 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        {#                Текущая среда#}
-                        <div class="tab-pane fade" id="wednesdayc" role="tabpanel" aria-labelledby="wednesdayc-tab">
+                        {#                    Текущая среда#}
+                        <div role="tabpanel" class="tab-pane fade {% if date in timetable == WednesdayC %} show active {% endif %}" id="tab23">
                             {% for table in timetable %}
                                 {% if table.date == WednesdayC %}
                                     <div class="div">
@@ -471,8 +498,8 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        {#                Текущий четверг#}
-                        <div class="tab-pane fade" id="thursdayc" role="tabpanel" aria-labelledby="thursdayc-tab">
+                        {#                    Текущий четверг#}
+                        <div role="tabpanel" class="tab-pane fade {% if timetable.date == ThursdayC %} show active {% endif %}" id="tab24">
                             {% for table in timetable %}
                                 {% if table.date == ThursdayC %}
                                     <div class="div">
@@ -508,8 +535,8 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        {#                Текущая пятница#}
-                        <div class="tab-pane fade" id="fridayc" role="tabpanel" aria-labelledby="fridayc-tab">
+                        {#                    Текущая пятница#}
+                        <div role="tabpanel" class="tab-pane fade {% if timetable.date == FridayC %} show active {% endif %}" id="tab25">
                             {% for table in timetable %}
                                 {% if table.date == FridayC %}
                                     <div class="div">
@@ -545,8 +572,8 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        {#                Текущая суббота#}
-                        <div class="tab-pane fade" id="saturdayc" role="tabpanel" aria-labelledby="saturdayc-tab">
+                        {#                    Текущая суббота#}
+                        <div role="tabpanel" class="tab-pane fade {% if timetable.date == SaturdayC %} show active {% endif %}" id="tab26">
                             {% for table in timetable %}
                                 {% if table.date == SaturdayC %}
                                     <div class="div">
@@ -584,84 +611,102 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="next" role="tabpanel" aria-labelledby="next-tab">
-                    {#                    Переключатели дней будущей недели#}
-                    <ul class="nav nav-tabs" id="myTabN" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="mondayn-tab" data-bs-toggle="tab"
-                                    data-bs-target="#mondayn" type="button" role="tab" aria-controls="mondayn"
-                                    aria-selected="true">Monday
+                {#            Будущая неделя#}
+                <div role="tabpanel" class="tab-pane fade" id="tab3">
+                    {#                Переключатели дней будущей недели#}
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == MondayN %}active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab31"
+                                    type="button" role="tab" aria-controls="tab31"
+                                    aria-selected="{% if timetable.date == SaturdayC %} true {% else %} false {% endif %}">
+                                Monday
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="tuesdayn-tab" data-bs-toggle="tab" data-bs-target="#tuesdayn"
-                                    type="button" role="tab" aria-controls="tuesdayn" aria-selected="false">Tuesday
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == TuesdayN %}active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab32"
+                                    type="button" role="tab" aria-controls="tab32"
+                                    aria-selected="{% if timetable.date == TuesdayN %} true {% else %} false {% endif %}">
+                                Tuesday
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="wednesdayn-tab" data-bs-toggle="tab"
-                                    data-bs-target="#wednesdayn" type="button" role="tab" aria-controls="wednesdayn"
-                                    aria-selected="false">Wednesday
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == WednesdayN %}active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab33"
+                                    type="button" role="tab" aria-controls="tab33"
+                                    aria-selected="{% if timetable.date == WednesdayN %} true {% else %} false {% endif %}">
+                                Wednesday
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="thursdayn-tab" data-bs-toggle="tab" data-bs-target="#thursdayn"
-                                    type="button" role="tab" aria-controls="thursdayn" aria-selected="false">Thursday
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == ThursdayN %}active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab34"
+                                    type="button" role="tab" aria-controls="tab34"
+                                    aria-selected="{% if timetable.date == ThursdayN %} true {% else %} false {% endif %}">
+                                Thursday
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="fridayn-tab" data-bs-toggle="tab" data-bs-target="#fridayn"
-                                    type="button" role="tab" aria-controls="fridayn" aria-selected="false">Friday
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == FridayN %}active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab35"
+                                    type="button" role="tab" aria-controls="tab35"
+                                    aria-selected="{% if timetable.date == FridayN %} true {% else %} false {% endif %}">
+                                Friday
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="saturdayn-tab" data-bs-toggle="tab" data-bs-target="#saturdayn"
-                                    type="button" role="tab" aria-controls="saturdayn" aria-selected="false">Saturday
+                        <li class="nav-item">
+                            <button class="nav-link {% if timetable.date == SaturdayN %}active {% endif %}"
+                                    data-bs-toggle="tab" data-bs-target="#tab36"
+                                    type="button" role="tab" aria-controls="tab36"
+                                    aria-selected="{% if timetable.date == SaturdayN %} true {% else %} false {% endif %}">
+                                Saturday
                             </button>
                         </li>
                     </ul>
-                    {#            Контент переключателей будущих дней недели#}
-                    <div class="tab-content" id="myTabContentN">
-                        {#            Будущий понедельник#}
-                        <div class="tab-pane fade show active" id="mondayn" role="tabpanel"
-                             aria-labelledby="mondayn-tab">
-                            {% for table in timetable %}
-                                {% if table.date == MondayN %}
-                                    <div class="div">
-                                        <div>
-                                            {{ table.number }}
-                                        </div>
-                                        <div>
-                                            {% if table.number == 1 %}
-                                                8:30 - 10:05
-                                            {% elif table.number == 2 %}
-                                                10:15 - 11:50
-                                            {% elif table.number == 3 %}
-                                                12:50 - 14:25
-                                            {% elif table.number == 4 %}
-                                                14:35 - 16:10
-                                            {% elif table.number == 5 %}
-                                                16:15 - 17:40
-                                            {% endif %}
-                                        </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
-                                        </div>
-                                        <div>
-                                            {{ table.teacher.last_name }}
-                                        </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
-                                        </div>
-                                        <div>
-                                            {{ table.cabinet.cabinet_name }}
-                                        </div>
+                    {#                Контент дней будущей недели#}
+                    <div class="tab-content">
+                        {#                    Будущий понедельник#}
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if timetable.date == MondayN %} show active {% endif %}"
+                             id="tab31">{% for table in timetable %}
+                            {% if table.date == MondayN %}
+                                <div class="div">
+                                    <div>
+                                        {{ table.number }}
                                     </div>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                        {#            Будущий вторник#}
-                        <div class="tab-pane fade" id="tuesdayn" role="tabpanel" aria-labelledby="tuesdayn-tab">
+                                    <div>
+                                        {% if table.number == 1 %}
+                                            8:30 - 10:05
+                                        {% elif table.number == 2 %}
+                                            10:15 - 11:50
+                                        {% elif table.number == 3 %}
+                                            12:50 - 14:25
+                                        {% elif table.number == 4 %}
+                                            14:35 - 16:10
+                                        {% elif table.number == 5 %}
+                                            16:15 - 17:40
+                                        {% endif %}
+                                    </div>
+                                    <div>
+                                        {{ table.lesson.lesson_name }}
+                                    </div>
+                                    <div>
+                                        {{ table.teacher.last_name }}
+                                    </div>
+                                    <div>
+                                        {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                    </div>
+                                    <div>
+                                        {{ table.cabinet.cabinet_name }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}</div>
+                        {#                    Будущий вторник#}
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if timetable.date == TuesdayN %} show active {% endif %}"
+                             id="tab32">
                             {% for table in timetable %}
                                 {% if table.date == TuesdayN %}
                                     <div class="div">
@@ -697,8 +742,10 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        {#            Будущая среда#}
-                        <div class="tab-pane fade" id="wednesdayn" role="tabpanel" aria-labelledby="wednesdayn-tab">
+                        {#                    Будущая среда#}
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if timetable.date == WednesdayN %} show active {% endif %}"
+                             id="tab33">
                             {% for table in timetable %}
                                 {% if table.date == WednesdayN %}
                                     <div class="div">
@@ -734,8 +781,10 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        {#            Будущий четверг#}
-                        <div class="tab-pane fade" id="thursdayn" role="tabpanel" aria-labelledby="thursdayn-tab">
+                        {#                    Будущий четверг#}
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if timetable.date == ThursdayN %} show active {% endif %}"
+                             id="tab34">
                             {% for table in timetable %}
                                 {% if table.date == ThursdayN %}
                                     <div class="div">
@@ -771,8 +820,10 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        {#            Будущая пятница#}
-                        <div class="tab-pane fade" id="fridayn" role="tabpanel" aria-labelledby="fridayn-tab">
+                        {#                    Будущая пятница#}
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if timetable.date == FridayN %} show active {% endif %}"
+                             id="tab35">
                             {% for table in timetable %}
                                 {% if table.date == FridayN %}
                                     <div class="div">
@@ -808,8 +859,10 @@
                                 {% endif %}
                             {% endfor %}
                         </div>
-                        {#            Будущая суббота#}
-                        <div class="tab-pane fade" id="saturdayn" role="tabpanel" aria-labelledby="saturdayn-tab">
+                        {#                    Будущая суббота#}
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if timetable.date == SaturdayN %} show active {% endif %}"
+                             id="tab36">
                             {% for table in timetable %}
                                 {% if table.date == SaturdayN %}
                                     <div class="div">
