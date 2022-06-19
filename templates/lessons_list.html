@@ -106,24 +106,46 @@
                     {#                Контент дней прошлой недели#}
                     <div class="tab-content">
                         {#                    Прошлый понедельник#}
-                        <div role="tabpanel" class="tab-pane fade {% if date in timetable == MondayP %} show active {% endif %}" id="tab11">
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if date in timetable == MondayP %} show active {% endif %}"
+                             id="tab11">
                             {% for table in timetable|dictsort:"number" %}
                                 {% if table.date == MondayP %}
                                     <div class="div">
                                         <div>
-                                            {{ table.number|dictsort:"number" }}
+                                            {{ table.number }}
                                         </div>
                                         <div>
                                             {% if table.number == 1 %}
-                                                8:30 - 10:05
+                                                {% if table.reduction == False %}
+                                                    8:30 - 10:05
+                                                {% else %}
+                                                    10:15 - 11:50
+                                                {% endif %}
                                             {% elif table.number == 2 %}
-                                                10:15 - 11:50
+                                                {% if table.reduction == False %}
+                                                    10:15 - 11:50
+                                                {% else %}
+                                                    12:50 - 14:25
+                                                {% endif %}
                                             {% elif table.number == 3 %}
-                                                12:50 - 14:25
+                                                {% if table.reduction == False %}
+                                                    12:50 - 14:25
+                                                {% else %}
+                                                    14:35 - 16:10
+                                                {% endif %}
                                             {% elif table.number == 4 %}
-                                                14:35 - 16:10
+                                                {% if table.reduction == False %}
+                                                    14:35 - 16:10
+                                                {% else %}
+                                                    16:15 - 17:40
+                                                {% endif %}
                                             {% elif table.number == 5 %}
-                                                16:15 - 17:40
+                                                {% if table.reduction == False %}
+                                                    16:15 - 17:40
+                                                {% else %}
+                                                    0
+                                                {% endif %}
                                             {% endif %}
                                         </div>
                                         <div>
@@ -142,7 +164,9 @@
                                 {% endif %}
                             {% endfor %}</div>
                         {#                    Прошлый вторник#}
-                        <div role="tabpanel" class="tab-pane fade {% if date in timetable == TuesdayP %} show active {% endif %}" id="tab12">
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if date in timetable == TuesdayP %} show active {% endif %}"
+                             id="tab12">
                             {% for table in timetable %}
                                 {% if table.date == TuesdayP %}
                                     <div class="div">
@@ -179,7 +203,9 @@
                             {% endfor %}
                         </div>
                         {#                    Прошлая среда#}
-                        <div role="tabpanel" class="tab-pane fade {% if date in timetable == WednesdayP %} show active {% endif %}" id="tab13">
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if date in timetable == WednesdayP %} show active {% endif %}"
+                             id="tab13">
                             {% for table in timetable %}
                                 {% if table.date == WednesdayP %}
                                     <div class="div">
@@ -216,7 +242,9 @@
                             {% endfor %}
                         </div>
                         {#                    Прошлый четверг#}
-                        <div role="tabpanel" class="tab-pane fade {% if date in timetable == ThursdayP %} show active {% endif %}" id="tab14">
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if date in timetable == ThursdayP %} show active {% endif %}"
+                             id="tab14">
                             {% for table in timetable %}
                                 {% if table.date == ThursdayP %}
                                     <div class="div">
@@ -253,7 +281,9 @@
                             {% endfor %}
                         </div>
                         {#                    Прошлая пятница#}
-                        <div role="tabpanel" class="tab-pane fade {% if date in timetable == FridayP %} show active {% endif %}" id="tab15">
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if date in timetable == FridayP %} show active {% endif %}"
+                             id="tab15">
                             {% for table in timetable %}
                                 {% if table.date == FridayP %}
                                     <div class="div">
@@ -290,7 +320,9 @@
                             {% endfor %}
                         </div>
                         {#                    Прошлая суббота#}
-                        <div role="tabpanel" class="tab-pane fade {% if date in timetable == SaturdayP %} show active {% endif %}" id="tab16">
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if date in timetable == SaturdayP %} show active {% endif %}"
+                             id="tab16">
                             {% for table in timetable %}
                                 {% if table.date == SaturdayP %}
                                     <div class="div">
@@ -384,7 +416,9 @@
                     {#                Контент дней текущей недели#}
                     <div class="tab-content">
                         {#                    Текущий понедельник#}
-                        <div role="tabpanel" class="tab-pane fade {% if date in timetable == MondayC %} show active {% endif %}" id="tab21">
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if date in timetable == MondayC %} show active {% endif %}"
+                             id="tab21">
                             {% for table in timetable %}
                                 {% if table.date == MondayC %}
                                     <div class="div">
@@ -421,7 +455,9 @@
                             {% endfor %}
                         </div>
                         {#                    Текущий вторник#}
-                        <div role="tabpanel" class="tab-pane fade {% if date in timetable == TuesdayC %} show active {% endif %}" id="tab22">
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if date in timetable == TuesdayC %} show active {% endif %}"
+                             id="tab22">
                             {% for table in timetable %}
                                 {% if table.date == TuesdayC %}
                                     <div class="div">
@@ -458,7 +494,9 @@
                             {% endfor %}
                         </div>
                         {#                    Текущая среда#}
-                        <div role="tabpanel" class="tab-pane fade {% if date in timetable == WednesdayC %} show active {% endif %}" id="tab23">
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if date in timetable == WednesdayC %} show active {% endif %}"
+                             id="tab23">
                             {% for table in timetable %}
                                 {% if table.date == WednesdayC %}
                                     <div class="div">
@@ -495,7 +533,9 @@
                             {% endfor %}
                         </div>
                         {#                    Текущий четверг#}
-                        <div role="tabpanel" class="tab-pane fade {% if date in timetable == ThursdayC %} show active {% endif %}" id="tab24">
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if date in timetable == ThursdayC %} show active {% endif %}"
+                             id="tab24">
                             {% for table in timetable %}
                                 {% if table.date == ThursdayC %}
                                     <div class="div">
@@ -532,7 +572,9 @@
                             {% endfor %}
                         </div>
                         {#                    Текущая пятница#}
-                        <div role="tabpanel" class="tab-pane fade {% if date in timetable == FridayC %} show active {% endif %}" id="tab25">
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if date in timetable == FridayC %} show active {% endif %}"
+                             id="tab25">
                             {% for table in timetable %}
                                 {% if table.date == FridayC %}
                                     <div class="div">
@@ -569,7 +611,9 @@
                             {% endfor %}
                         </div>
                         {#                    Текущая суббота#}
-                        <div role="tabpanel" class="tab-pane fade {% if date in timetable == SaturdayC %} show active {% endif %}" id="tab26">
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if date in timetable == SaturdayC %} show active {% endif %}"
+                             id="tab26">
                             {% for table in timetable %}
                                 {% if table.date == SaturdayC %}
                                     <div class="div">
