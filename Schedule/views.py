@@ -39,13 +39,13 @@ def main_page(request):
     SaturdayP = previous + relativedelta(weekday=SA)
     SaturdayC = current + relativedelta(weekday=SA)
     SaturdayN = next + relativedelta(weekday=SA)
-    if not search == None:
+    if search:
         timetable = TimeTable.objects.filter(
             Q(teacher__first_name=search) | Q(teacher__last_name=search) |
             Q(teacher__middle_name=search) | Q(cabinet__cabinet_name=search) | Q(
                 group__group_name__startswith=search
             ), date__range=[datetime.now() - timedelta(days=USER_RANGE_START),
-                            datetime.now() + timedelta(days=USER_RANGE_END)]).order_by('-date')
+                            datetime.now() + timedelta(days=USER_RANGE_END)]).order_by('number', '-date')
         return render(request, 'lessons_list.html', {
             'today': today,
             'previous': previous,

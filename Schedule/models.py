@@ -74,3 +74,4 @@ class TimeTable(models.Model):
     class Meta:
         verbose_name = "Расписание"
         verbose_name_plural = "Расписание"
+        ordering = ["number"]

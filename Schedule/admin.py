@@ -8,7 +8,7 @@ class TimeTableAdmin(admin.ModelAdmin):
     list_display = ['id', 'number', 'teacher', 'date', 'group', 'cabinet', 'lesson', 'reduction']
     list_editable = ['number', 'teacher', 'date', 'group', 'cabinet', 'lesson', 'reduction']
     ordering = ['date', 'teacher', 'number']
-    search_fields = ['teacher__last_name', 'date', 'group', 'lesson']
+    search_fields = ['teacher__last_name', 'date', 'group__group_name', 'lesson__lesson_name']
     list_filter = (('date', DateRangeFilter),)
     save_as = True
 

@@ -107,11 +107,11 @@
                     <div class="tab-content">
                         {#                    Прошлый понедельник#}
                         <div role="tabpanel" class="tab-pane fade {% if date in timetable == MondayP %} show active {% endif %}" id="tab11">
-                            {% for table in timetable %}
+                            {% for table in timetable|dictsort:"number" %}
                                 {% if table.date == MondayP %}
                                     <div class="div">
                                         <div>
-                                            {{ table.number }}
+                                            {{ table.number|dictsort:"number" }}
                                         </div>
                                         <div>
                                             {% if table.number == 1 %}
