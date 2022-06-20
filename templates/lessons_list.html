@@ -112,37 +112,31 @@
                                             {{ table.number }}
                                         </div>
                                         <div>
+                                        {% if table.reduction == False %}
                                             {% if table.number == 1 %}
-                                                {% if table.reduction == False %}
                                                     8:30 - 10:05
-                                                {% else %}
-                                                    10:15 - 11:50
-                                                {% endif %}
                                             {% elif table.number == 2 %}
-                                                {% if table.reduction == False %}
                                                     10:15 - 11:50
-                                                {% else %}
-                                                    12:50 - 14:25
-                                                {% endif %}
                                             {% elif table.number == 3 %}
-                                                {% if table.reduction == False %}
                                                     12:50 - 14:25
-                                                {% else %}
-                                                    14:35 - 16:10
-                                                {% endif %}
                                             {% elif table.number == 4 %}
-                                                {% if table.reduction == False %}
                                                     14:35 - 16:10
-                                                {% else %}
-                                                    16:15 - 17:40
-                                                {% endif %}
                                             {% elif table.number == 5 %}
-                                                {% if table.reduction == False %}
                                                     16:15 - 17:40
-                                                {% else %}
-                                                    0
-                                                {% endif %}
                                             {% endif %}
+                                        {% else %}
+                                            {% if table.number == 1 %}
+                                                    8:30 - 10:05c
+                                            {% elif table.number == 2 %}
+                                                    10:15 - 11:50c
+                                            {% elif table.number == 3 %}
+                                                    12:50 - 14:25c
+                                            {% elif table.number == 4 %}
+                                                    14:35 - 16:10c
+                                            {% elif table.number == 5 %}
+                                                    16:15 - 17:40c
+                                            {% endif %}
+                                        {% endif %}
                                         </div>
                                         <div>
                                             {{ table.lesson.lesson_name }}
