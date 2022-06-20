@@ -47,6 +47,7 @@ def main_page(request):
             ), date__range=[datetime.now() - timedelta(days=USER_RANGE_START),
                             datetime.now() + timedelta(days=USER_RANGE_END)]).order_by('number', '-date')
         return render(request, 'lessons_list.html', {
+            'search': search,
             'today': today,
             'previous': previous,
             'current': current,

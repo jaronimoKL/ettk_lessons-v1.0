@@ -75,14 +75,6 @@ h2 {
     background-color: #42464D;
     color: white;
 }
-optgroup {
-    font-size: 26px !important;
-    line-height: 30px !important;
-    font-weight: 500 !important;
-}
-option {
-    font-size: 22px;
-}
 .dark option {
     background-color: #42464D;
     color: white;
@@ -103,6 +95,9 @@ option {
     width: 100% !important;
     display: flex;
     justify-content: center;
+}
+
+.nav-week {
     margin-bottom: 12px !important;
 }
 
@@ -140,13 +135,13 @@ option {
     margin-bottom: 10px;
     height: 60px;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding-right: 81px;
 }
 .dark .div {
     background-color: #2F3136;
 }
-
-.number{
+.div div:first-child {
     height: 60px;
     width: 60px;
     display: flex;
@@ -156,7 +151,6 @@ option {
     border-radius: 50px;
     font-size: 32px;
 }
-
-.dark .number{
+.dark .div div:first-child{
     border: solid 2px #7595FF;
 }
