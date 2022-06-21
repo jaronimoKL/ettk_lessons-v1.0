@@ -88,7 +88,7 @@ label {
 .dark .item {
     color: white!important;
 }
-/*Табличка расписания*/
+/*Кнопки расписания*/
 .nav-week, .nav-day {
     width: 100% !important;
     display: flex;
@@ -123,16 +123,15 @@ label {
     opacity: 0.6;
     background-color: #2F3136!important;
 }
+/*Табличка расписания*/
 .div {
     display: flex;
     background-color: #E2E2E2;
     border-radius: 50px;
     width: 100%;
     margin-top: 12px;
-    height: 60px;
     align-items: center;
     justify-content: space-between;
-    padding-right: 81px;
 }
 .dark .div {
     background-color: #2F3136;
@@ -149,4 +148,17 @@ label {
 }
 .dark .div div:first-child{
     border: solid 2px #7595FF;
+}
+/*Адаптив*/
+@media (min-width: 0px) {
+    .container {
+        max-width: none;
+        font-size: 14px;
+    }
+    .div div:first-child {
+        display: flex;
+        height: 40px;
+        width: 40px;
+        font-size: 20px;
+    }
 }

@@ -107,7 +107,7 @@
                         <div role="tabpanel"
                              class="tab-pane fade {% if date in timetable == MondayP %} show active {% endif %}"
                              id="tab11">
-                            {% for table in timetable|dictsort:"number" %}
+                            {% for table in timetable %}
                                 {% if table.date == MondayP %}
                                     <div class="div">
                                         <div>
@@ -128,15 +128,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -147,7 +147,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -180,15 +180,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -199,7 +199,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -233,15 +233,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -252,7 +252,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -286,15 +286,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -305,7 +305,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -339,15 +339,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -358,7 +358,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -392,15 +392,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -411,7 +411,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -502,15 +502,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -521,7 +521,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -555,15 +555,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -574,7 +574,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -608,15 +608,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -627,7 +627,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -661,15 +661,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -680,7 +680,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -714,15 +714,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -733,7 +733,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -767,15 +767,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -786,7 +786,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -876,16 +876,16 @@
                                             {% endif %}
                                         {% else %}
                                             {% if table.number == 1 %}
-                                                8:30 - 10:05c
-                                            {% elif table.number == 2 %}
-                                                10:15 - 11:50c
-                                            {% elif table.number == 3 %}
-                                                12:50 - 14:25c
-                                            {% elif table.number == 4 %}
-                                                14:35 - 16:10c
-                                            {% elif table.number == 5 %}
-                                                16:15 - 17:40c
-                                            {% endif %}
+                                                    8:30 - 9:50
+                                                {% elif table.number == 2 %}
+                                                    10:00 - 11:20
+                                                {% elif table.number == 3 %}
+                                                    11:50 - 13:00
+                                                {% elif table.number == 4 %}
+                                                    13:10 - 14:20
+                                                {% elif table.number == 5 %}
+                                                    14:30 - 15:40
+                                                {% endif %}
                                         {% endif %}
                                     </div>
                                     <div>
@@ -895,7 +895,7 @@
                                         {{ table.teacher.last_name }}
                                     </div>
                                     <div>
-                                        {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                        {{ table.group.group_name }} {{ table.subgroups }}
                                     </div>
                                     <div>
                                         {{ table.cabinet.cabinet_name }}
@@ -928,15 +928,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -947,7 +947,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -981,15 +981,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -1000,7 +1000,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -1034,15 +1034,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -1053,7 +1053,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -1087,15 +1087,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -1106,7 +1106,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
@@ -1140,15 +1140,15 @@
                                                 {% endif %}
                                             {% else %}
                                                 {% if table.number == 1 %}
-                                                    8:30 - 10:05c
+                                                    8:30 - 9:50
                                                 {% elif table.number == 2 %}
-                                                    10:15 - 11:50c
+                                                    10:00 - 11:20
                                                 {% elif table.number == 3 %}
-                                                    12:50 - 14:25c
+                                                    11:50 - 13:00
                                                 {% elif table.number == 4 %}
-                                                    14:35 - 16:10c
+                                                    13:10 - 14:20
                                                 {% elif table.number == 5 %}
-                                                    16:15 - 17:40c
+                                                    14:30 - 15:40
                                                 {% endif %}
                                             {% endif %}
                                         </div>
@@ -1159,7 +1159,7 @@
                                             {{ table.teacher.last_name }}
                                         </div>
                                         <div>
-                                            {{ table.group.group_name }} {{ table.lesson.subgroups }}
+                                            {{ table.group.group_name }} {{ table.subgroups }}
                                         </div>
                                         <div>
                                             {{ table.cabinet.cabinet_name }}
