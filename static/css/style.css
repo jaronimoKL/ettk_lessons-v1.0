@@ -1,25 +1,22 @@
+/*Общие*/
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-
 html{
     font-size: 18px;
-    color: black;
     font-family: Inter, sans-serif!important;
 }
 .dark html{
     color: white;
 }
-
 .container {
     background-color: #F0F0F0;
 }
 .dark .container {
     background: #202225;
 }
-
 body {
     background-color: #F0F0F0!important;
     color: #000!important;
@@ -28,7 +25,7 @@ body {
     background: #202225!important;
     color: #fff!important;
 }
-
+/*Кнопка темы*/
 .btn-them {
     display: flex!important;
     align-items: center;
@@ -39,7 +36,7 @@ body {
 .dark .btn-them {
     background-color: #42464D!important;
 }
-
+/*Хедер*/
 .header {
     display: flex;
     align-items: center;
@@ -47,72 +44,72 @@ body {
     height: 90px;
     margin-bottom: 40px;
 }
-/*как лучше?*/
-h2 {
-    font-size: 32px!important;
+/*Поле поиска*/
+.selectize {
+    width: 100%;
 }
-.dark h2 {
-    font-size: 32px!important;
-}
-
-.form-floating{
-    width: 100% !important;
-}
-.form-row {
-    margin: 0!important;
-}
-
-.form-select {
-    margin-bottom: 10px;
-    border-radius: 6px!important;
-}
-.dark .form-select {
-    border: solid 1px #8E9297;
+.dark .selectize {
     background-color: rgba(66, 70, 77, 0);
 }
-
-.dark optgroup {
-    background-color: #42464D;
-    color: white;
+.items {
+    display: flex!important;
+    align-items: center;
+    height: 60px;
+    padding: 0 20px!important;
+    border-radius: 6px!important;
+    text-align: left!important;
+    font-size: 20px!important;
 }
-.dark option {
-    background-color: #42464D;
-    color: white;
+.selectize-input input {
+    font-size: 20px!important;
 }
-.opt {
-    display: none;
+.selectize-control.single .selectize-input {
+    background-color: rgba(255, 255, 255, 0) !important;
+    background-image: none!important;
 }
-
-.form-floating>.form-select {
-    padding-top: 2.825rem!important;
+label {
+    width: 100%;
 }
-
-.container {
-    max-width: 70% !important;
+/*Выпадающий список поиска*/
+.selectize-dropdown {
+    border: none!important;
+    border-radius: 6px!important;
 }
-
+.selectize-dropdown-content {
+    font-size: 20px;
+    border-radius: 6px;
+}
+.dark .selectize-dropdown-content {
+    background-color: #E2E2E2;
+}
+.dark .optgroup-header {
+    background-color: #E2E2E2!important;
+}
+.dark .item {
+    color: white!important;
+}
+/*Табличка расписания*/
 .nav-week, .nav-day {
     width: 100% !important;
     display: flex;
     justify-content: center;
 }
-
 .nav-week {
+    margin-top: 12px!important;
     margin-bottom: 12px !important;
 }
-
 .nav-week-li {
     width: 33% !important;
 }
-
 .nav-week-li button, .nav-day li button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
 }
-
 .nav-day li {
     width: 16.6% !important;
 }
-
 .dark .nav-tabs .nav-link.active {
     color: #7595FF;
     border-color: #7595FF;
@@ -126,13 +123,12 @@ h2 {
     opacity: 0.6;
     background-color: #2F3136!important;
 }
-
 .div {
     display: flex;
     background-color: #E2E2E2;
     border-radius: 50px;
     width: 100%;
-    margin-bottom: 10px;
+    margin-top: 12px;
     height: 60px;
     align-items: center;
     justify-content: space-between;
