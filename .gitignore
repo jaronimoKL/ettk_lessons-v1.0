@@ -327,3 +327,4 @@ tags
 ### Project template
 .pytest_cache/
 .ipython/
+Schedule/migrations/0006_alter_timetable_options.py
