@@ -77,6 +77,9 @@ body {
 label {
     width: 100%;
 }
+.dark .selectize-input input {
+    color: white;
+}
 /*Выпадающий список поиска*/
 .selectize-dropdown {
     border: none!important;
