@@ -8,7 +8,8 @@
             <form id="MyForm" class="form-row" action="{% url 'main_page' %}" method="get" autocomplete="off">
                 {#            Поле поиска#}
                 <label>
-                    <select class="js-selectize select selectize" name="search" placeholder="Выберите" onchange="this.form.submit()">
+                    <select class="js-selectize select selectize" name="search" placeholder="Выберите группу или преподавателя"
+                            onchange="this.form.submit()">
                         <option value="{{ search }}">{{ search }}</option>
                         <optgroup label="Преподаватели">
                             {% for teach in teacher_name %}
@@ -110,10 +111,10 @@
                             {% for table in timetable %}
                                 {% if table.date == MondayP %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -140,16 +141,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -162,10 +163,10 @@
                             {% for table in timetable %}
                                 {% if table.date == TuesdayP %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -192,16 +193,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -215,10 +216,10 @@
                             {% for table in timetable %}
                                 {% if table.date == WednesdayP %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -245,16 +246,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -268,10 +269,10 @@
                             {% for table in timetable %}
                                 {% if table.date == ThursdayP %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -298,16 +299,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -321,10 +322,10 @@
                             {% for table in timetable %}
                                 {% if table.date == FridayP %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -351,16 +352,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -374,10 +375,10 @@
                             {% for table in timetable %}
                                 {% if table.date == SaturdayP %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -404,16 +405,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -479,15 +480,15 @@
                     <div class="tab-content">
                         {#                    Текущий понедельник#}
                         <div role="tabpanel"
-                             class="tab-pane fade {% if date in timetable == MondayC %} show active {% endif %}"
+                             class="tab-pane fade tab21"
                              id="tab21">
                             {% for table in timetable %}
                                 {% if table.date == MondayC %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -514,16 +515,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -532,15 +533,15 @@
                         </div>
                         {#                    Текущий вторник#}
                         <div role="tabpanel"
-                             class="tab-pane fade {% if date in timetable == TuesdayC %} show active {% endif %}"
+                             class="tab-pane fade tab22"
                              id="tab22">
                             {% for table in timetable %}
                                 {% if table.date == TuesdayC %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -567,16 +568,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -585,15 +586,15 @@
                         </div>
                         {#                    Текущая среда#}
                         <div role="tabpanel"
-                             class="tab-pane fade {% if date in timetable == WednesdayC %} show active {% endif %}"
+                             class="tab-pane fade tab23"
                              id="tab23">
                             {% for table in timetable %}
                                 {% if table.date == WednesdayC %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -620,16 +621,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -638,15 +639,15 @@
                         </div>
                         {#                    Текущий четверг#}
                         <div role="tabpanel"
-                             class="tab-pane fade {% if date in timetable == ThursdayC %} show active {% endif %}"
+                             class="tab-pane fade tab24"
                              id="tab24">
                             {% for table in timetable %}
                                 {% if table.date == ThursdayC %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -673,16 +674,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -691,15 +692,15 @@
                         </div>
                         {#                    Текущая пятница#}
                         <div role="tabpanel"
-                             class="tab-pane fade {% if date in timetable == FridayC %} show active {% endif %}"
+                             class="tab-pane fade tab25"
                              id="tab25">
                             {% for table in timetable %}
                                 {% if table.date == FridayC %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -726,16 +727,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -744,15 +745,15 @@
                         </div>
                         {#                    Текущая суббота#}
                         <div role="tabpanel"
-                             class="tab-pane fade {% if date in timetable == SaturdayC %} show active {% endif %}"
+                             class="tab-pane fade tab26"
                              id="tab26">
                             {% for table in timetable %}
                                 {% if table.date == SaturdayC %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -779,16 +780,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -858,62 +859,10 @@
                              id="tab31">{% for table in timetable %}
                             {% if table.date == MondayN %}
                                 <div class="div">
-                                    <div>
-                                        {{ table.number }}
-                                    </div>
-                                    <div>
-                                        {% if table.reduction == False %}
-                                            {% if table.number == 1 %}
-                                                8:30 - 10:05
-                                            {% elif table.number == 2 %}
-                                                10:15 - 11:50
-                                            {% elif table.number == 3 %}
-                                                12:50 - 14:25
-                                            {% elif table.number == 4 %}
-                                                14:35 - 16:10
-                                            {% elif table.number == 5 %}
-                                                16:15 - 17:40
-                                            {% endif %}
-                                        {% else %}
-                                            {% if table.number == 1 %}
-                                                    8:30 - 9:50
-                                                {% elif table.number == 2 %}
-                                                    10:00 - 11:20
-                                                {% elif table.number == 3 %}
-                                                    11:50 - 13:00
-                                                {% elif table.number == 4 %}
-                                                    13:10 - 14:20
-                                                {% elif table.number == 5 %}
-                                                    14:30 - 15:40
-                                                {% endif %}
-                                        {% endif %}
-                                    </div>
-                                    <div>
-                                        {{ table.lesson.lesson_name }}
-                                    </div>
-                                    <div>
-                                        {{ table.teacher.last_name }}
-                                    </div>
-                                    <div>
-                                        {{ table.group.group_name }} {{ table.subgroups }}
-                                    </div>
-                                    <div>
-                                        {{ table.cabinet.cabinet_name }}
-                                    </div>
-                                </div>
-                            {% endif %}
-                        {% endfor %}</div>
-                        {#                    Будущий вторник#}
-                        <div role="tabpanel"
-                             class="tab-pane fade {% if date in timetable == TuesdayN %} show active {% endif %}"
-                             id="tab32">
-                            {% for table in timetable %}
-                                {% if table.date == TuesdayN %}
-                                    <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -940,16 +889,68 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
+                                        <div class="item_6">
+                                            {{ table.cabinet.cabinet_name }}
                                         </div>
-                                        <div>
+                                    </div>
+                            {% endif %}
+                        {% endfor %}</div>
+                        {#                    Будущий вторник#}
+                        <div role="tabpanel"
+                             class="tab-pane fade {% if date in timetable == TuesdayN %} show active {% endif %}"
+                             id="tab32">
+                            {% for table in timetable %}
+                                {% if table.date == TuesdayN %}
+                                    <div class="div">
+                                        <div class="item_1">
+                                            {{ table.number }}
+                                        </div>
+                                        <div class="item_2">
+                                            {% if table.reduction == False %}
+                                                {% if table.number == 1 %}
+                                                    8:30 - 10:05
+                                                {% elif table.number == 2 %}
+                                                    10:15 - 11:50
+                                                {% elif table.number == 3 %}
+                                                    12:50 - 14:25
+                                                {% elif table.number == 4 %}
+                                                    14:35 - 16:10
+                                                {% elif table.number == 5 %}
+                                                    16:15 - 17:40
+                                                {% endif %}
+                                            {% else %}
+                                                {% if table.number == 1 %}
+                                                    8:30 - 9:50
+                                                {% elif table.number == 2 %}
+                                                    10:00 - 11:20
+                                                {% elif table.number == 3 %}
+                                                    11:50 - 13:00
+                                                {% elif table.number == 4 %}
+                                                    13:10 - 14:20
+                                                {% elif table.number == 5 %}
+                                                    14:30 - 15:40
+                                                {% endif %}
+                                            {% endif %}
+                                        </div>
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
+                                        </div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
+                                            {{ table.teacher.last_name }}
+                                        </div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -963,10 +964,10 @@
                             {% for table in timetable %}
                                 {% if table.date == WednesdayN %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -993,16 +994,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -1016,10 +1017,10 @@
                             {% for table in timetable %}
                                 {% if table.date == ThursdayN %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -1046,16 +1047,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -1069,10 +1070,10 @@
                             {% for table in timetable %}
                                 {% if table.date == FridayN %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -1099,16 +1100,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -1122,10 +1123,10 @@
                             {% for table in timetable %}
                                 {% if table.date == SaturdayN %}
                                     <div class="div">
-                                        <div>
+                                        <div class="item_1">
                                             {{ table.number }}
                                         </div>
-                                        <div>
+                                        <div class="item_2">
                                             {% if table.reduction == False %}
                                                 {% if table.number == 1 %}
                                                     8:30 - 10:05
@@ -1152,16 +1153,16 @@
                                                 {% endif %}
                                             {% endif %}
                                         </div>
-                                        <div>
-                                            {{ table.lesson.lesson_name }}
+                                        <div class="item_3">
+                                            {{ table.lesson.lesson_name }} {{ table.subgroups }}
                                         </div>
-                                        <div>
+                                        <div class="item_4">
+                                            {{ table.group.group_name }}
+                                        </div>
+                                        <div class="item_5">
                                             {{ table.teacher.last_name }}
                                         </div>
-                                        <div>
-                                            {{ table.group.group_name }} {{ table.subgroups }}
-                                        </div>
-                                        <div>
+                                        <div class="item_6">
                                             {{ table.cabinet.cabinet_name }}
                                         </div>
                                     </div>
@@ -1175,22 +1176,22 @@
     </div>
 {% endblock content %}
 {#Что это?#}
-{#                <div class="input-group">#}
-{#                    <div id="search-autocomplete" class="form-outline">#}
-{#                        <input name="search" type="text" id="form1" class="form-control"/>#}
-{#                        <label class="form-label" for="form1">Поиск</label>#}
-{#                    </div>#}
-{#                    <button type="submit" class="btn btn-primary">#}
-{#                        <i class="fas fa-search"></i>#}
-{#                    </button>#}
-{#                </div>#}
+                <div class="input-group">
+                    <div id="search-autocomplete" class="form-outline">
+                        <input name="search" type="text" id="form1" class="form-control"/>
+                        <label class="form-label" for="form1">Поиск</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
 
-{#            Суперпользователи#}
-{#                {% if request.user.is_superuser %}#}
-{#                    <div class="form-group mx-sm-3 mb-2">#}
-{#                        <input type="search" class="form-control" name="date_start" placeholder="Дата начала">#}
-{#                    </div>#}
-{#                    <div class="form-group mx-sm-3 mb-2">#}
-{#                        <input type="date" class="form-control" name="date_end" placeholder="Дата конца">#}
-{#                    </div>#}
-{#                {% endif %}#}
+            Суперпользователи
+                {% if request.user.is_superuser %}
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input type="search" class="form-control" name="date_start" placeholder="Дата начала">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input type="date" class="form-control" name="date_end" placeholder="Дата конца">
+                    </div>
+                {% endif %}
